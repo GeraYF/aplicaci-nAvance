@@ -11,17 +11,13 @@ namespace aplicación.Models
         public decimal? Precio {get; set;}
         public string? TipoPrecio {get; set;}
         public int? Cantidad {get; set;}
-        public decimal Costo {get; }
-        public decimal Tax {get; }
-        public decimal Total {get; }
+        public decimal Costo {get; set; }
+        public decimal Tax {get; set; }
+        public decimal Total {get; set; }
 
 
-    public Ordenes(string instrumento, decimal precio, string tipoPrecio, int cantidad)
+    public void  CalcularOrden()
     {
-        Instrumento= instrumento;
-        Precio= precio;
-        TipoPrecio= tipoPrecio;
-        Cantidad= cantidad;
         Costo= (decimal)(Precio * Cantidad);
         Tax= Costo * 0.18m;
         Total= Costo + Tax;
